@@ -1,0 +1,59 @@
+{% extends 'test_words/base.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% load static %}
+
+{% block index_additional %}
+    <link rel="stylesheet" href="{% static 'test_words/css/style_table.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Таблица со словами</h1>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Список слов</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p>{{word}}</p>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Слово</th>
+                <th>TF</th>
+                <th>IDF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <form action="{% url 'list' %}" method="get">
+                        Введите слово <input name="name" type="text" placeholder="Search...">
+                    </form>
+                </td>
+                <td>
+                    <p>{{count}}</p>
+                </td>
+                <td>
+                    <p>{{idf}}</p>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+{% endblock %}
